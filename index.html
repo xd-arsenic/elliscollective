@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urgent: Tell City Council to Vote NO on S500</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      line-height: 1.5;
+      color: #1a1a1a;
+    }
+    h1 {
+      font-size: 1.35rem;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+    }
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+    input:focus {
+      outline: none;
+      border-color: #0066cc;
+      box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+    }
+    button {
+      background: #0066cc;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0052a3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Urgent: Community Action Needed</h1>
+  <p class="subtitle">Councilmember Stephen Whitburn has introduced item S500 to adopt the IHRA Definition of Antisemitism. Criticism of Israel and Zionism is not the same as antisemitism. The IHRA definition conflates these and risks chilling free speech and civil liberties. Tell the Council to vote no or remove S500 from the March 17 agenda.</p>
+
+  <form id="form">
+    <label for="name">Your name (required)</label>
+    <input type="text" id="name" name="name" required placeholder="Jane Smith">
+
+    <button type="submit">Open email to Council</button>
+  </form>
+
+  <script>
+    const COUNCIL_EMAILS = [
+      'joelacava@sandiego.gov',
+      'jennifercampbell@sandiego.gov',
+      'stephenwhitburn@sandiego.gov',
+      'henryfoster@sandiego.gov',
+      'marnivonwilpert@sandiego.gov',
+      'kentlee@sandiego.gov',
+      'raulcampillo@sandiego.gov',
+      'vivianmoreno@sandiego.gov',
+      'seanelorivera@sandiego.gov'
+    ];
+
+    const EMAIL_TEMPLATES = [
+      {
+        subject: 'Please oppose item S500 / IHRA adoption',
+        body: "Hello Councilmember,\n\nI'm writing to urge you to oppose item S500 adopting the IHRA definition. I believe it risks conflating antisemitism with legitimate criticism of Israel and could chill free speech and civil liberties.\n\nPlease remove this item from the agenda or vote no.\n\nThank you."
+      },
+      {
+        subject: 'Vote NO on S500 – IHRA definition',
+        body: "Dear Council Member,\n\nI strongly oppose item S500, which would adopt the IHRA definition of antisemitism. Criticism of Israel and Zionism is not the same as antisemitism. The IHRA definition blurs this distinction and raises serious concerns about free speech and civil liberties.\n\nPlease remove S500 from the March 17 agenda or vote no.\n\nThank you."
+      },
+      {
+        subject: 'Re: Item S500 – Oppose IHRA adoption',
+        body: "To the San Diego City Council,\n\nI am writing to ask you to oppose item S500 and the adoption of the IHRA definition. Many civil rights organizations warn that this definition conflates criticism of Israel with antisemitism and could threaten our free speech and civil liberties.\n\nPlease vote no or remove this item from the 3/17 agenda.\n\nSincerely"
+      },
+      {
+        subject: 'Remove S500 from 3/17 agenda – IHRA concerns',
+        body: "Hello,\n\nI urge you to oppose item S500 and the IHRA definition of antisemitism. Criticism of Israeli government actions and Zionism is not antisemitic. The IHRA definition risks conflating the two and could chill protected speech.\n\nPlease remove this from the March 17 agenda or vote no.\n\nThank you."
+      },
+      {
+        subject: 'Say no to S500 – Protect free speech',
+        body: "Dear Councilmember,\n\nPlease oppose item S500 and the adoption of the IHRA definition. Criticism of Israel is not antisemitism. The IHRA definition conflates these issues and puts our free speech and civil liberties at risk.\n\nPlease remove S500 from the agenda or vote no.\n\nThank you."
+      },
+      {
+        subject: 'Oppose S500 – IHRA definition harms civil liberties',
+        body: "To the Council,\n\nI am writing to urge you to vote no on item S500. The IHRA definition conflates criticism of Israel and Zionism with antisemitism. Civil rights groups have raised concerns that it could undermine free speech and civil liberties.\n\nPlease remove this item from the 3/17 agenda.\n\nSincerely"
+      },
+      {
+        subject: 'Please vote NO on item S500',
+        body: "Hello Councilmember,\n\nItem S500, introduced by Councilmember Whitburn, would adopt the IHRA definition of antisemitism. I believe this is a mistake. Criticism of Israel is not antisemitism. The IHRA definition blurs this line and could chill legitimate speech and civil liberties.\n\nPlease remove S500 from the March 17 agenda or vote no.\n\nThank you."
+      },
+      {
+        subject: 'Re: S500 / IHRA – Community opposition',
+        body: "Dear Council Member,\n\nI'm a San Diego resident writing to oppose item S500 and the IHRA definition. Criticizing Israel's actions or Zionism is not antisemitic. The IHRA definition conflates these and risks our free speech. Many civil rights organizations share these concerns.\n\nPlease remove this from the 3/17 agenda or vote no.\n\nSincerely"
+      },
+      {
+        subject: 'Urgent: Oppose S500 on 3/17 agenda',
+        body: "To the San Diego City Council,\n\nPlease oppose item S500 and the adoption of the IHRA definition. Criticism of Israel and Zionism is not the same as antisemitism. The IHRA definition conflates them and could threaten free speech and civil liberties.\n\nPlease remove this item from the March 17 agenda or vote no.\n\nThank you."
+      },
+      {
+        subject: 'Do not adopt IHRA – Vote no on S500',
+        body: "Hello,\n\nI urge you to vote no on item S500. Adopting the IHRA definition would conflate legitimate criticism of Israel with antisemitism. Civil rights organizations have warned this could harm free speech and civil liberties.\n\nPlease remove S500 from the agenda or vote no.\n\nSincerely"
+      },
+      {
+        subject: 'S500: Please remove from agenda – IHRA concerns',
+        body: "Dear Councilmember,\n\nI'm writing to ask you to oppose item S500 and the IHRA definition. Criticism of Israel is not antisemitism. The IHRA definition risks conflating the two and chilling protected speech. Please remove S500 from the March 17 agenda or vote no.\n\nThank you."
+      },
+      {
+        subject: 'Vote no on S500 – Protect civil liberties',
+        body: "To the Council,\n\nPlease vote no on item S500. The IHRA definition of antisemitism conflates criticism of Israel and Zionism with antisemitism. Many groups warn this could threaten our free speech and civil liberties.\n\nPlease remove this from the 3/17 agenda.\n\nSincerely"
+      },
+      {
+        subject: 'Oppose IHRA adoption – Item S500',
+        body: "Hello Council Member,\n\nI strongly oppose item S500 and the IHRA definition. Criticizing Israeli government actions and Zionism is not antisemitic. The IHRA definition blurs this distinction and could chill speech and civil liberties.\n\nPlease remove S500 from the March 17 agenda or vote no.\n\nThank you."
+      },
+      {
+        subject: 'Re: March 17 – Vote NO on S500',
+        body: "Dear Councilmember,\n\nItem S500 would adopt the IHRA definition of antisemitism. I believe this is wrong. Criticism of Israel is not antisemitism. The IHRA definition conflates them and puts free speech at risk. Civil rights organizations have raised serious concerns.\n\nPlease remove from the 3/17 agenda or vote no.\n\nSincerely"
+      },
+      {
+        subject: 'S500 – Remove from agenda / Vote no',
+        body: "To the San Diego City Council,\n\nPlease oppose item S500. The IHRA definition conflates criticism of Israel with antisemitism. This could threaten our free speech and civil liberties. I ask you to remove S500 from the March 17 agenda or vote no.\n\nThank you."
+      },
+      {
+        subject: 'Community call: Oppose S500 on 3/17',
+        body: "Hello,\n\nI'm writing to urge you to oppose item S500 and the IHRA definition. Criticism of Israel and Zionism is not antisemitism. The IHRA definition conflates these and could chill speech. Please remove this from the March 17 agenda or vote no.\n\nThank you."
+      },
+      {
+        subject: 'Please oppose S500 – IHRA and free speech',
+        body: "Dear Council Member,\n\nItem S500, introduced by Councilmember Whitburn, would adopt the IHRA definition. I oppose this. Criticism of Israel is not antisemitism. The IHRA definition risks conflating them and undermining free speech and civil liberties.\n\nPlease remove from the 3/17 agenda or vote no.\n\nSincerely"
+      },
+      {
+        subject: 'Vote NO – S500 / IHRA definition',
+        body: "To the Council,\n\nI urge you to vote no on item S500. The IHRA definition conflates criticism of Israel with antisemitism. Civil rights organizations warn this could harm free speech and civil liberties. Please remove S500 from the March 17 agenda or vote no.\n\nThank you."
+      },
+      {
+        subject: 'Remove S500 from agenda – March 17',
+        body: "Hello Councilmember,\n\nPlease oppose item S500 and the adoption of the IHRA definition. Criticizing Israel and Zionism is not the same as antisemitism. The IHRA definition conflates these and could threaten our free speech. Please remove this item from the 3/17 agenda or vote no.\n\nSincerely"
+      },
+      {
+        subject: 'S500 / IHRA – Please vote no',
+        body: "Dear Council Member,\n\nI'm writing to ask you to oppose item S500. The IHRA definition conflates criticism of Israel with antisemitism. Many civil rights groups have raised concerns about free speech and civil liberties. Please remove S500 from the March 17 agenda or vote no.\n\nThank you."
+      },
+      {
+        subject: 'Oppose item S500 – Protect free speech',
+        body: "To the San Diego City Council,\n\nI strongly oppose item S500 and the IHRA definition. Criticism of Israeli actions and Zionism is not antisemitic. The IHRA definition blurs this line and could chill legitimate speech. Please remove from the 3/17 agenda or vote no.\n\nThank you."
+      },
+      {
+        subject: 'Re: S500 – Oppose IHRA adoption',
+        body: "Hello,\n\nPlease vote no on item S500. The IHRA definition conflates criticism of Israel with antisemitism and could threaten free speech and civil liberties. I ask you to remove S500 from the March 17 agenda or vote no.\n\nSincerely"
+      },
+      {
+        subject: '3/17 agenda – Vote NO on S500',
+        body: "Dear Councilmember,\n\nItem S500 would adopt the IHRA definition of antisemitism. I oppose this. Criticism of Israel is not antisemitism. The IHRA definition conflates them and puts our free speech at risk. Please remove this from the agenda or vote no.\n\nThank you."
+      },
+      {
+        subject: 'S500: Oppose IHRA – Free speech at risk',
+        body: "To the Council,\n\nI urge you to oppose item S500 and the IHRA definition. Criticism of Israel and Zionism is not the same as antisemitism. The IHRA definition risks conflating them and chilling speech. Civil rights organizations have raised concerns. Please remove from the 3/17 agenda or vote no.\n\nSincerely"
+      },
+      {
+        subject: 'Please remove S500 from 3/17 agenda',
+        body: "Hello Council Member,\n\nI'm writing to urge you to vote no on item S500. The IHRA definition conflates criticism of Israel with antisemitism and could threaten free speech and civil liberties. Please remove S500 from the March 17 agenda or vote no.\n\nThank you."
+      },
+      {
+        subject: 'Vote no on S500 – IHRA conflates criticism with antisemitism',
+        body: "Dear Councilmember,\n\nPlease oppose item S500 and the IHRA definition. Criticism of Israel is not antisemitism. The IHRA definition conflates these issues and could chill free speech and civil liberties. I ask you to remove S500 from the March 17 agenda or vote no.\n\nSincerely"
+      }
+    ];
+
+    document.getElementById('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      if (!name) return;
+
+      const template = EMAIL_TEMPLATES[Math.floor(Math.random() * EMAIL_TEMPLATES.length)];
+      const body = template.body + '\n\n' + name;
+      const to = COUNCIL_EMAILS.join(',');
+
+      const mailto = 'mailto:' + encodeURIComponent(to) +
+        '?subject=' + encodeURIComponent(template.subject) +
+        '&body=' + encodeURIComponent(body);
+
+      window.location.href = mailto;
+    });
+  </script>
+</body>
+</html>
